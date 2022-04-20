@@ -18,6 +18,7 @@ python manage.py runserver
 |type|url|data |
 |----|---|-----------|
 |POST |/api/posts/|`{"title": "post title","content": "post content", "owner": "post owner"}`|
+
 Либо доступно по адресу в POST-форме:
 ```
 /api/posts/
@@ -27,6 +28,7 @@ python manage.py runserver
 |type|url|data |
 |----|---|-----------|
 |POST |/api/comments/|`{"text": "comment text","author": "comment author", "post": <int:post_id>}`|
+
 Либо доступно по адресу в POST-форме:
 ```
 /api/comments/
@@ -36,6 +38,7 @@ python manage.py runserver
 |type|url|data |
 |----|---|-----------|
 |POST |/api/comments/|`{"text": "comment text","author": "comment author", "post": <int:post_id>, "parent": <int:comment_id>}`|
+
 Либо доступно по адресу в POST-форме:
 ```
 /api/comments/
