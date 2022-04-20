@@ -8,7 +8,5 @@ class CommentsFilter(FilterSet):
     class Meta:
         model = Comment
         fields = {
-            'parent': ['exact'],
-            'owner': ['exact'],
-            # 'number_of_pages': ['gte', 'exact', 'lte']
+            'level': ['gte', 'lte']
         }

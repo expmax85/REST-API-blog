@@ -4,8 +4,6 @@ from api_comments.api import PostViewSet, CommentViewSet
 
 
 router = routers.DefaultRouter()
-router.register('posts', PostViewSet)
-urlpatterns = router.urls
-
+router.register('posts', PostViewSet, basename='Post')
 router.register('comments', CommentViewSet, basename='Comment')
-urlpatterns += router.urls
+urlpatterns = router.urls

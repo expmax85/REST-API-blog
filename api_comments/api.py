@@ -1,31 +1,34 @@
+from pprint import pprint
+
 from django.contrib.auth import get_user_model
-from django.db.models import Q, Count, QuerySet
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets
+from rest_framework import mixins
+from rest_framework.response import Response
+from rest_framework.viewsets import GenericViewSet
 
 from api_comments.filters import CommentsFilter
-from api_comments.models import Post, Comment
+from api_comments.models import Comment, Post
 from api_comments import serializers
 
 User = get_user_model()
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet):
     queryset = Post.objects.all()
     serializer_class = serializers.PostSerializer
 
 
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet):
+    queryset = Comment.objects.select_related('parent', 'post').all()
     serializer_class = serializers.CommentSerializer
-    # filter_backends = [DjangoFilterBackend]
-    # filter_class = CommentsFilter
+    filter_backends = [DjangoFilterBackend]
+    filter_class = CommentsFilter
 
-    def get_queryset(self):
-        queryset = Comment.objects.all()
-        reply_level = self.request.query_params.get('reply_level')
-        if reply_level:
-            queryset = queryset.filter(level__lte=reply_level)
-        level_from = self.request.query_params.get('level_from')
-        if level_from:
-            queryset = queryset.filter(level__gte=level_from)
-        return queryset
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if request.GET.get('nested'):
+            queryset = instance.get_descendants(include_self=request.GET.get('include_self', False))
+            serializer = self.get_serializer(queryset, many=True)
+        else:
+            serializer = self.get_serializer(instance)
+        return Response(serializer.data)
