@@ -10,7 +10,7 @@ git clone https://github.com/expmax85/blog
 cd blog/
 python3 -m pip install -r requirements.txt
 ```
-Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`
+Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`, или переименовать `.env.template`.
 В случае использования иной БД, указанной в шаблоне, установить данную БД и заполнить все поля файла `.env`
 ```console
 python3 manage.py makemigrations
@@ -27,9 +27,6 @@ python3 manage.py runserver 0.0.0.0:8000
 python manage.py loaddata fixtures/posts.json
 python manage.py loaddata fixtures/comments.json
 ```
-
-После этого необходимо создать файл `.env` и заполнить его по шаблону файла `.env.template`
-В случае использования иной БД, указанной в шаблоне, установить данную БД и заполнить все поля файла `.env`
 
 ## Docker
 
