@@ -4,15 +4,37 @@
 Это тестовое задание по реализации REST API для системы комментариев блога
 
 ## Установка
+
+### Linux
 ```console
 git clone https://github.com/expmax85/blog
 cd blog/
-pip install -r requirenments.txt
-pip install psycopg2
+sudo apt install python3-pip
+python3 -m pip install -r requirements.txt
+```
+Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`
+В случае использования иной БД, указанной в шаблоне, установить данную БД и заполнить все поля файла `.env`
+```console
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py runserver 0.0.0.0:8000
+```
+
+### Windows:
+```console
+git clone https://github.com/expmax85/blog
+cd blog/
+python -m pip install -r requirements.txt
+```
+Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`
+В случае использования иной БД, указанной в шаблоне, установить данную БД и заполнить все поля файла `.env`
+```console
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000
 ```
+
+### Тестовые данные
 Если необходимо, можно заполнить проект тестовыми данными, выполнив следующие команды перед командой `runserver`:
 ```console
 python manage.py loaddata fixtures/posts.json
@@ -24,14 +46,13 @@ python manage.py loaddata fixtures/comments.json
 
 ## Docker
 
-Чтобы запустить проект через docker-compose, необходимо переименовать файл `.env-docker.template` в `.env`, внести правки при необходимости.
+Чтобы запустить проект через docker-compose, необходимо переименовать файл `.env-docker.template` в `.env`, внести правки при необходимости в нем и файле docker-compose.
 В контейнере используются python3.8 и postgres последней версии.
 И выполнить поочередно следующие команды:
 ```console
 sudo docker-compose build
 sudo docker-compose up
 ```
-Cfqn ,eltn ljcnegt
 
 ## Добавление статьи
 
