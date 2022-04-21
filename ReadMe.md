@@ -5,11 +5,9 @@
 
 ## Установка
 
-### Linux
 ```console
 git clone https://github.com/expmax85/blog
 cd blog/
-sudo apt install python3-pip
 python3 -m pip install -r requirements.txt
 ```
 Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`
@@ -20,19 +18,8 @@ python3 manage.py migrate
 python3 manage.py runserver 0.0.0.0:8000
 ```
 
-### Windows:
-```console
-git clone https://github.com/expmax85/blog
-cd blog/
-python -m pip install -r requirements.txt
-```
-Cоздать файл `.env` и заполнить его по шаблону файла `.env.template`
-В случае использования иной БД, указанной в шаблоне, установить данную БД и заполнить все поля файла `.env`
-```console
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
-```
+> [!NOTE]
+> При установке в OS Windows использовать `python` вместо `python3`.
 
 ### Тестовые данные
 Если необходимо, можно заполнить проект тестовыми данными, выполнив следующие команды перед командой `runserver`:
