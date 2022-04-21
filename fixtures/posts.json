@@ -1,0 +1,1 @@
+[{"model": "api_comments.post", "pk": 1, "fields": {"created": "2022-04-21T13:20:48.134Z", "title": "test post", "content": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet asperiores assumenda, atque corporis et fugiat id illo libero minima neque optio porro quaerat quos suscipit tenetur veniam. Sapiente, ullam!", "owner": "testauthor1"}}]

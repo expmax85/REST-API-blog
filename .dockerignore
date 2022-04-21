@@ -1,0 +1,6 @@
+/venv/
+/.idea
+/*/migrations/
+
+db.sqlite3
+/data/
