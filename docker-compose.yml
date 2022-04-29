@@ -16,8 +16,8 @@ services:
     command:
       sh -c "python3 manage.py makemigrations --no-input && 
              python3 manage.py migrate --no-input && 
-             python manage.py loaddata fixtures/posts.json --no-input &&
-             python manage.py loaddata fixtures/comments.json --no-input &&
+             python3 manage.py loaddata fixtures/posts.json --no-input &&
+             python3 manage.py loaddata fixtures/comments.json --no-input &&
              python3 manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
