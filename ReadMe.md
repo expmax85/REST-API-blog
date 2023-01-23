@@ -34,8 +34,8 @@ python manage.py loaddata fixtures/comments.json
 В контейнере используются python3.8 и postgres последней версии.
 И выполнить поочередно следующие команды:
 ```console
-sudo docker-compose build
-sudo docker-compose up
+docker compose build
+docker compose up
 ```
 
 ## Добавление статьи
